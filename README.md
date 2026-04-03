@@ -17,7 +17,7 @@ Tech Stack
 * OpenAI API
 * Vercel
 
-#Note
+Note
 
 Projects section will be updated as new AI/ML and GenAI work is added.
 
