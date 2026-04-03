@@ -1,32 +1,44 @@
-# Abdul Rahman – AI/ML Portfolio with Chatbot
+# Abdul Rahman Portfolio
 
-Production-ready AI/ML portfolio built with Next.js and OpenAI API.
+Production-ready Next.js portfolio website for Abdul Rahman with a floating AI chatbot.
 
-Features
+## Setup
 
-* Modern responsive portfolio (Next.js + Tailwind)
-* Live AI chatbot (OpenAI integration)
-* Clean UI with corporate + futuristic design
-* Ready for Vercel deployment
+Install dependencies:
 
-Tech Stack
+```bash
+npm install
+```
 
-* Next.js
-* React
-* Tailwind CSS
-* OpenAI API
-* Vercel
+Create an environment file:
 
-Note
+```bash
+cp .env.example .env.local
+```
 
-Projects section will be updated as new AI/ML and GenAI work is added.
+Then add your OpenAI API key to `.env.local`.
 
-Live Demo
+## Run locally
 
-(Will be added after deployment)
+```bash
+npm run dev
+```
 
-Contact
+## Build
 
- Email: [abdulxrahman.ai@gmail.com](mailto:abdulxrahman.ai@gmail.com)
- GitHub: https://github.com/abdulxrahman-ai
- LinkedIn: https://www.linkedin.com/in/abdulxrahman
+```bash
+npm run build
+```
+
+## Deploy to Vercel
+
+1. Push this project to GitHub
+2. Import the repository into Vercel
+3. Add `OPENAI_API_KEY` in Vercel project settings
+4. Deploy
+
+## Notes
+
+- Replace `public/resume.pdf` with your real resume later
+- The Projects section is intentionally left blank for future updates
+- Internship and publications are not shown yet
