@@ -10,7 +10,7 @@ Install dependencies:
 npm install
 ```
 
-Create an environment file:
+Create an environment file: 
 
 ```bash
 cp .env.example .env.local
