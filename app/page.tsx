@@ -373,16 +373,6 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section id="skills" eyebrow="Skills" title="Core strengths being built and applied.">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {skills.map((skill) => (
-              <div key={skill} className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-lg shadow-slate-200/30">
-                <p className="text-lg font-semibold text-slate-900">{skill}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
         <Section id="resume" eyebrow="Resume" title="Resume placeholder ready for upload.">
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
             <p className="max-w-2xl text-slate-600">
