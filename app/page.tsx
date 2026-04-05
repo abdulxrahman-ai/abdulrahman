@@ -28,7 +28,6 @@ const navItems = [
   { id: "home", label: "Home", icon: Home },
   { id: "about", label: "About", icon: User },
   { id: "projects", label: "Projects", icon: Briefcase },
-  { id: "skills", label: "Skills", icon: Brain },
   { id: "resume", label: "Resume", icon: FileText },
   { id: "contact", label: "Contact", icon: Mail },
 ];
@@ -150,7 +149,7 @@ function ChatBot() {
         className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-2xl shadow-slate-300/30"
       >
         {open ? <X className="h-4 w-4" /> : <MessageCircle className="h-4 w-4" />}
-        {open ? "Close chat" : "Ask Abdul AI"}
+        {open ? "Close chat" : "Ask About Abdul"}
       </motion.button>
 
       <AnimatePresence>
@@ -295,16 +294,25 @@ export default function Page() {
                 I’m <span className="font-semibold text-slate-900">Abdul Rahman</span>, an aspiring AI/ML Engineer and GenAI-focused builder based in Chicago. I enjoy turning data, machine learning, and practical problem-solving into useful digital experiences.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#projects" className="rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90">
+                <a
+                  href="#projects"
+                  className="rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+                >
                   View Projects
                 </a>
-                <a href="/resume.pdf" className="rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50">
+                <a
+                  href="/resume.pdf"
+                  className="rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+                >
                   Download Resume
                 </a>
               </div>
               <div className="mt-10 flex flex-wrap gap-3">
                 {skills.map((skill) => (
-                  <span key={skill} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm">
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm"
+                  >
                     {skill}
                   </span>
                 ))}
@@ -364,47 +372,72 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section id="projects" eyebrow="Projects" title="My Work & Projects">
-  <div className="grid gap-6 md:grid-cols-2">
+        <Section id="projects" eyebrow="Projects" title="Featured Project">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:shadow-xl">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    AI Resume Intelligence
+                  </h3>
+                  <p className="mt-2 text-slate-600">
+                    An AI-powered resume analyzer that evaluates resumes, extracts key insights,
+                    and provides intelligent feedback using modern NLP and GenAI techniques.
+                    Designed to simulate ATS-like analysis for smarter hiring decisions.
+                  </p>
+                </div>
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                  GenAI Project
+                </span>
+              </div>
 
-    {/* Resume Intelligence Project */}
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg hover:shadow-xl transition">
-      <h3 className="text-xl font-semibold text-slate-900">
-        AI Resume Intelligence
-      </h3>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  Next.js
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  OpenAI
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  NLP
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  AI UX
+                </span>
+              </div>
 
-      <p className="mt-2 text-slate-600">
-        An AI-powered resume analyzer that evaluates resumes, extracts key insights,
-        and provides intelligent feedback using modern NLP and GenAI techniques.
-        Designed to simulate ATS-like analysis for smarter hiring decisions.
-      </p>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <a
+                  href="https://abdulrahman-ai.vercel.app"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
+                >
+                  Live Demo
+                </a>
 
-      <div className="mt-4 flex gap-4">
-        <a
-          href="https://abdulrahman-ai.vercel.app" 
-          target="_blank"
-          className="text-sm font-medium text-blue-600 hover:underline"
-        >
-          Live Demo →
-        </a>
-
-        <a
-          href="https://github.com/abdulxrahman-ai/resume-intelligence"
-          target="_blank"
-          className="text-sm font-medium text-gray-700 hover:underline"
-        >
-          GitHub →
-        </a>
-      </div>
-  </div>
-</Section>
+                <a
+                  href="https://github.com/abdulxrahman-ai/resume-intelligence"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-slate-300 px-5 py-2.5 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+                >
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </Section>
 
         <Section id="resume" eyebrow="Resume" title="Resume placeholder ready for upload.">
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
             <p className="max-w-2xl text-slate-600">
               Replace the placeholder <span className="font-medium text-slate-900">resume.pdf</span> file later with your final resume.
             </p>
-            <a href="/resume.pdf" className="mt-6 inline-flex rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90">
+            <a
+              href="/resume.pdf"
+              className="mt-6 inline-flex rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+            >
               Download Resume
             </a>
           </div>
@@ -413,15 +446,28 @@ export default function Page() {
         <Section id="contact" eyebrow="Contact" title="Let’s connect.">
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
             <div className="mt-2 space-y-4 text-sm text-slate-700">
-              <a href="mailto:abdulxrahman.ai@gmail.com" className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100">
+              <a
+                href="mailto:abdulxrahman.ai@gmail.com"
+                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
+              >
                 <Mail className="h-4 w-4" />
                 abdulxrahman.ai@gmail.com
               </a>
-              <a href="https://github.com/abdulxrahman-ai" target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100">
+              <a
+                href="https://github.com/abdulxrahman-ai"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
+              >
                 <Github className="h-4 w-4" />
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/abdulxrahman" target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100">
+              <a
+                href="https://www.linkedin.com/in/abdulxrahman"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
+              >
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
               </a>
@@ -434,10 +480,20 @@ export default function Page() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-sm text-slate-500 lg:flex-row">
           <p>© 2026 Abdul Rahman. Built for AI/ML, data, and GenAI opportunities.</p>
           <div className="flex items-center gap-4">
-            <a href="https://github.com/abdulxrahman-ai" target="_blank" rel="noreferrer" className="hover:text-slate-800">
+            <a
+              href="https://github.com/abdulxrahman-ai"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-slate-800"
+            >
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/abdulxrahman" target="_blank" rel="noreferrer" className="hover:text-slate-800">
+            <a
+              href="https://www.linkedin.com/in/abdulxrahman"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-slate-800"
+            >
               LinkedIn
             </a>
           </div>
