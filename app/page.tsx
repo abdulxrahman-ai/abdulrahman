@@ -149,7 +149,7 @@ function ChatBot() {
         className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-2xl shadow-slate-300/30"
       >
         {open ? <X className="h-4 w-4" /> : <MessageCircle className="h-4 w-4" />}
-        {open ? "Close chat" : "Ask About Abdul"}
+        {open ? "Close chat" : "Ask Abdul AI"}
       </motion.button>
 
       <AnimatePresence>
@@ -393,7 +393,10 @@ export default function Page() {
 
               <div className="mt-6 flex flex-wrap gap-2">
                 <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  Next.js
+                  Python
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  Streamlit
                 </span>
                 <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
                   OpenAI
@@ -401,19 +404,16 @@ export default function Page() {
                 <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
                   NLP
                 </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  AI UX
-                </span>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-4">
                 <a
-                  href="https://abdulrahman-ai.vercel.app"
+                  href="https://github.com/abdulxrahman-ai/resume-intelligence"
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
                 >
-                  Live Demo
+                  View Project
                 </a>
 
                 <a
