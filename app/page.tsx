@@ -364,14 +364,40 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section id="projects" eyebrow="Projects" title="Project space ready for future work.">
-          <div className="rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-10 text-center">
-            <p className="text-lg font-medium text-slate-900">Projects will be added here.</p>
-            <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-              This section is intentionally left open so new AI, ML, data, or GenAI projects can be inserted later.
-            </p>
-          </div>
-        </Section>
+        <Section id="projects" eyebrow="Projects" title="My Work & Projects">
+  <div className="grid gap-6 md:grid-cols-2">
+
+    {/* Resume Intelligence Project */}
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg hover:shadow-xl transition">
+      <h3 className="text-xl font-semibold text-slate-900">
+        AI Resume Intelligence
+      </h3>
+
+      <p className="mt-2 text-slate-600">
+        An AI-powered resume analyzer that evaluates resumes, extracts key insights,
+        and provides intelligent feedback using modern NLP and GenAI techniques.
+        Designed to simulate ATS-like analysis for smarter hiring decisions.
+      </p>
+
+      <div className="mt-4 flex gap-4">
+        <a
+          href="https://abdulrahman-ai.vercel.app" 
+          target="_blank"
+          className="text-sm font-medium text-blue-600 hover:underline"
+        >
+          Live Demo →
+        </a>
+
+        <a
+          href="https://github.com/abdulxrahman-ai/resume-intelligence"
+          target="_blank"
+          className="text-sm font-medium text-gray-700 hover:underline"
+        >
+          GitHub →
+        </a>
+      </div>
+  </div>
+</Section>
 
         <Section id="resume" eyebrow="Resume" title="Resume placeholder ready for upload.">
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
