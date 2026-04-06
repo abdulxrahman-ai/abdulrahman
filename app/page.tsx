@@ -408,7 +408,7 @@ export default function Page() {
 
               <div className="mt-6 flex flex-wrap gap-4">
                 <a
-                  href="https://resume-intelligence1.streamlit.app"
+                  href="https://resume-intelligence-aggi.onrender.com"
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
