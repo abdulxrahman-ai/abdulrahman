@@ -339,7 +339,7 @@ export default function Page() {
     <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
       <div className="mb-5 flex items-center gap-3">
         <div className="rounded-2xl bg-slate-900 p-3 text-white">
-          <Cpu className="h-5 w-5" />
+          <Network className="h-5 w-5" />
         </div>
         <div>
           <p className="text-lg font-semibold text-slate-900">AI/ML Engineer focused on GenAI</p>
