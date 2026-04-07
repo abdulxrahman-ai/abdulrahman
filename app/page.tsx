@@ -426,6 +426,65 @@ export default function Page() {
                 </a>
               </div>
             </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:shadow-xl">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    AI Stock Prediction + News Sentiment Dashboard
+                  </h3>
+                  <p className="mt-2 text-slate-600">
+                    An AI-powered market intelligence dashboard that combines stock trend analysis,
+                    technical indicators, short-term forecasting, and news sentiment analysis to
+                    deliver structured, data-driven insights.
+                  </p>
+                </div>
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                  ML Project
+                </span>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  Python
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  Streamlit
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  Machine Learning
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  NLP
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  yFinance
+                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  Plotly
+                </span>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-4">
+                <a
+                  href="https://stock-prediction-dashboard1.streamlit.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
+                >
+                  View Project
+                </a>
+
+                <a
+                  href="https://github.com/abdulxrahman-ai/stock-prediction-dashboard"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-slate-300 px-5 py-2.5 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+                >
+                  View Code
+                </a>
+              </div>
+            </div>
           </div>
         </Section>
 
