@@ -361,25 +361,23 @@ export default function Page() {
 <div className="mb-5 flex items-center gap-3">
   <div className="rounded-xl bg-slate-900 p-2 text-white">
     <GraduationCap className="h-4 w-4" />
-  </div>
   <h3 className="text-lg font-semibold text-slate-900">Education</h3>
-</div> 
-   </div>
 </div>
-      
-      <div className="space-y-5">
-        {education.map((item) => (
-          <div key={item.school} className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-            <p className="font-semibold text-slate-900">{item.school}</p>
-            <p className="mt-1 text-sm text-slate-700">{item.degree}</p>
-            <p className="mt-1 text-sm text-slate-500">{item.field}</p>
-            <p className="mt-2 text-sm text-slate-500">{item.dates}</p>
-          </div>
-        ))}
-      </div>
-    </div>
   </div>
-</Section>
+  <div className="space-y-5">
+    {education.map((item) => (
+      <div
+        key={item.school}
+        className="rounded-2xl border border-slate-100 bg-slate-50 p-5"
+      >
+        <p className="font-semibold text-slate-900">{item.school}</p>
+        <p className="mt-1 text-sm text-slate-700">{item.degree}</p>
+        <p className="mt-1 text-sm text-slate-500">{item.field}</p>
+        <p className="mt-2 text-sm text-slate-500">{item.dates}</p>
+      </div>
+    ))}
+  </div>
+</div>
 
         <Section id="projects" eyebrow="Projects" title="Featured Project">
           <div className="grid gap-6 md:grid-cols-2">
