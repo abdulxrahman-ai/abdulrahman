@@ -332,7 +332,7 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section id="about" eyebrow="About Abdul" title="">
+        <Section id="about" eyebrow="About Abdul Rahman" title="A bit about who I am and what I do">
   <div className="grid gap-6 lg:grid-cols-2">
     <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
       <div className="mb-5 flex items-center gap-3">
