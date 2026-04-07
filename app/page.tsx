@@ -358,11 +358,10 @@ export default function Page() {
       </p>
     </div>
 
-    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
-  <div className="mb-5 flex items-center gap-3">
- <div className="mb-5 flex items-center gap-3">
-  <div className="rounded-2xl bg-slate-900 p-3 text-white">
-    <GraduationCap className="h-5 w-5" />
+<div className="mb-5 flex items-center gap-3">
+  <div className="rounded-xl bg-slate-900 p-2 text-white">
+    <GraduationCap className="h-4 w-4" />
+  </div>
   <h3 className="text-lg font-semibold text-slate-900">Education</h3>
 </div> 
    </div>
