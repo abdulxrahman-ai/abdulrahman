@@ -366,9 +366,9 @@ export default function Page() {
                     AI Resume Intelligence
                   </h3>
                   <p className="mt-2 text-slate-600">
-                    An AI-powered resume analyzer that evaluates resumes, extracts key insights,
+                    Developed an AI-powered resume analysis system that evaluates resumes, extracts key insights,
                     and provides intelligent feedback using modern NLP and GenAI techniques.
-                    Designed to simulate ATS-like analysis for smarter hiring decisions.
+                    The system is designed to reflect ATS style evaluation and support more informed hiring decisions.
                   </p>
                 </div>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
@@ -419,9 +419,8 @@ export default function Page() {
                     AI Stock Prediction + News Sentiment Dashboard
                   </h3>
                   <p className="mt-2 text-slate-600">
-                    An AI-powered market intelligence dashboard that combines stock trend analysis,
-                    technical indicators, short-term forecasting, and news sentiment analysis to
-                    deliver structured, data-driven insights.
+                    Worked on developing an AI based market intelligence dashboard that brings together stock trend and analysis,
+                    technical indicators, and sentiment analysis to present structured and data driven insight.
                   </p>
                 </div>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
