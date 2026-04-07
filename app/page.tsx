@@ -280,7 +280,7 @@ export default function Page() {
       </header>
 
       <main className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <Section id="home" eyebrow="AI / ML / GenAI" title="Building intelligent systems with ML, data, and GenAI.">
+        <Section id="home" eyebrow="AI / ML / GenAI" title="Building intelligent systems with ML, Data, and GenAI.">
           <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
               <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
@@ -332,7 +332,7 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section id="about" eyebrow="About" title="A focused foundation in AI, data, and problem solving.">
+        id="about" eyebrow="About Abdul Rahman" title="A focused foundation in AI, Data, and problem solving.">
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
               <p className="text-base leading-8 text-slate-600">
