@@ -324,7 +324,7 @@ export default function Page() {
                   </div>
                   <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
                     <p className="font-medium text-slate-900">GenAI</p>
-                    <p className="mt-1">Exploring practical AI interfaces, assistants, and portfolio-ready product experiences.</p>
+                    <p className="mt-1">Exploring practical AI interfaces, assistants, and portfolio ready product experiences.</p>
                   </div>
                 </div>
               </div>
