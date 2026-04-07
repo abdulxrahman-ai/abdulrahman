@@ -13,6 +13,7 @@ import {
   Briefcase,
   FileText,
   Github,
+  Graduationcap,
   Home,
   Linkedin,
   Mail,
