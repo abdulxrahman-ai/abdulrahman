@@ -284,7 +284,7 @@ export default function Page() {
           <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
               <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-                I’m <span className="font-semibold text-slate-900">Abdul Rahman</span>, an AI/ML Engineer Specializing in GenAI, focused on building scalable, data driven systems that transform complex problems into intelligent digital solutoin. 
+                I’m <span className="font-semibold text-slate-900">Abdul Rahman</span>, an AI/ML Engineer Specializing in GenAI, focused on building scalable, data driven systems that transform complex problems into intelligent digital solution. 
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
