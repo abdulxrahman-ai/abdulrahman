@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Bot,
-  cpu,
+  Cpu,
   Brain,
   Briefcase,
   FileText,
@@ -30,7 +30,7 @@ const navItems = [
   { id: "about", label: "About", icon: User },
   { id: "projects", label: "Projects", icon: Briefcase },
   { id: "publications", label: "Publications", icon: FileText },
-  { id: "skills", label: "Skills", icon: Brain },
+  { id: "skills", label: "Skills", icon: Cpu },
   { id: "contact", label: "Contact", icon: Mail },
 ];
 
