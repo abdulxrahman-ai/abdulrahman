@@ -332,7 +332,7 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section id="about" eyebrow="About Abdul Rahman" title="A bit about who I am and what I do">
+        <Section id="about" eyebrow="About Abdul Rahman" title="A bit about who I am and what I do!">
   <div className="grid gap-6 lg:grid-cols-2">
     <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
       <div className="mb-5 flex items-center gap-3">
@@ -346,7 +346,7 @@ export default function Page() {
       </div>
 
       <p className="text-base leading-8 text-slate-600">
-        I’m an AI/ML Engineer with a strong focus on GenAI, based in Chicago and currently pursuing a Master’s in Artificial Intelligence. I build intelligent, data-driven systems by combining machine learning, structured problem solving, and modern AI technologies.
+        I’m an AI/ML Engineer with a strong focus on GenAI, based in Chicago and currently pursuing a Master’s in Artificial Intelligence. I build intelligent and data-driven systems by combining machine learning, structured problem solving, and modern AI technologies.
       </p>
 
       <p className="mt-5 text-base leading-8 text-slate-600">
