@@ -361,7 +361,7 @@ export default function Page() {
 <div className="mb-5 flex items-center gap-3">
   <div className="rounded-xl bg-slate-900 p-2 text-white">
     <GraduationCap className="h-4 w-4" />
-</div>
+</div> <h3 className="text-lg font-semibold text-slate-900">Education</h3>
   </div>
 <div className="space-y-5">
     {education.map((item) => (
