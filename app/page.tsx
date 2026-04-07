@@ -28,16 +28,9 @@ const navItems = [
   { id: "home", label: "Home", icon: Home },
   { id: "about", label: "About", icon: User },
   { id: "projects", label: "Projects", icon: Briefcase },
-  { id: "resume", label: "Resume", icon: FileText },
+  { id: "publications", label: "Publications", icon: FileText },
+  { id: "skills", label: "Skills", icon: Brain },
   { id: "contact", label: "Contact", icon: Mail },
-];
-
-const skills = [
-  "Python",
-  "Machine Learning",
-  "SQL",
-  "Technology Management",
-  "Communication",
 ];
 
 const education = [
@@ -307,16 +300,6 @@ export default function Page() {
                   Download Resume
                 </a>
               </div>
-              <div className="mt-10 flex flex-wrap gap-3">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
             </div>
 
             <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-xl shadow-slate-200/60">
@@ -488,17 +471,109 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section id="resume" eyebrow="Resume" title="Resume placeholder ready for upload.">
+        <Section id="publications" eyebrow="Publications" title="Research & publication work.">
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
             <p className="max-w-2xl text-slate-600">
-              Replace the placeholder <span className="font-medium text-slate-900">resume.pdf</span> file later with your final resume.
+              Publication details will be added here as research papers, technical write-ups, and formal contributions are published.
             </p>
-            <a
-              href="/resume.pdf"
-              className="mt-6 inline-flex rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
-            >
-              Download Resume
-            </a>
+          </div>
+        </Section>
+
+        <Section id="skills" eyebrow="Skills" title="Core technical skills for AI/ML and GenAI engineering.">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">AI / ML & GenAI</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "PyTorch",
+                  "TensorFlow",
+                  "Scikit-learn",
+                  "LangChain",
+                  "Hugging Face",
+                  "LLMs",
+                  "RAG",
+                  "NLP",
+                  "Computer Vision",
+                  "Deep Learning",
+                  "Prompt Engineering",
+                  "MLOps",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">Development & Frameworks</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Python",
+                  "JavaScript",
+                  "React.js",
+                  "Node.js",
+                  "Flask",
+                  "REST APIs",
+                  "Docker",
+                  "Git",
+                  "Linux CLI",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">Data, Analytics & Visualization</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "SQL",
+                  "PySpark MLlib",
+                  "Matplotlib",
+                  "Plotly",
+                  "CNN",
+                  "YOLO",
+                  "ResNet",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">Cloud, Systems & Infrastructure</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "AWS",
+                  "Azure",
+                  "Google Cloud Platform",
+                  "Linux (Ubuntu)",
+                  "System-Level Debugging",
+                  "Hardware-Software Integration",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </Section>
 
