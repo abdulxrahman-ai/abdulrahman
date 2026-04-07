@@ -361,7 +361,13 @@ export default function Page() {
     </div>
 
     <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
-      <h3 className="mb-5 text-lg font-semibold text-slate-900">Education</h3>
+  <div className="mb-5 flex items-center gap-3">
+  <div className="rounded-2xl bg-slate-900 p-3 text-white">
+    <GraduationCap className="h-5 w-5" />
+  </div>
+  <h3 className="text-lg font-semibold text-slate-900">Education</h3>
+</div>
+      
       <div className="space-y-5">
         {education.map((item) => (
           <div key={item.school} className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
