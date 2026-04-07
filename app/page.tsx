@@ -363,7 +363,7 @@ export default function Page() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-semibold text-slate-900">
-                    AI Resume Intelligence
+                    Resume Intelligence
                   </h3>
                   <p className="mt-2 text-slate-600">
                     Developed an AI-powered resume analysis system that evaluates resumes, extracts key insights,
