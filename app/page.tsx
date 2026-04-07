@@ -1,13 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Bot,
   Briefcase,
-  Network,
-  Cpu,
-  Atom,
   Brain,
   FileText,
   Github,
@@ -21,6 +18,7 @@ import {
   Sparkles,
   User,
   X,
+  Atom,
 } from "lucide-react";
 
 type Message = {
@@ -55,6 +53,44 @@ const education = [
 const starterMessage =
   "Hi, I’m Abdul’s AI assistant. Ask me about his background, skills, and projects.";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const staggerContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+function Reveal({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 function Section({
   id,
   title,
@@ -67,7 +103,14 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 py-16 sm:py-20">
+    <motion.section
+      id={id}
+      className="scroll-mt-24 py-16 sm:py-20"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.12 }}
+    >
       <div className="mb-8">
         <p className="mb-2 text-sm font-medium uppercase tracking-[0.25em] text-slate-500">
           {eyebrow}
@@ -77,7 +120,7 @@ function Section({
         </h2>
       </div>
       {children}
-    </section>
+    </motion.section>
   );
 }
 
@@ -145,7 +188,11 @@ function ChatBot() {
         onClick={() => setOpen((v) => !v)}
         className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-2xl shadow-slate-300/30"
       >
-        {open ? <X className="h-4 w-4" /> : <MessageCircle className="h-4 w-4" />}
+        {open ? (
+          <X className="h-4 w-4" />
+        ) : (
+          <MessageCircle className="h-4 w-4" />
+        )}
         {open ? "Close chat" : "Ask Abdul AI"}
       </motion.button>
 
@@ -155,6 +202,7 @@ function ChatBot() {
             initial={{ opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed bottom-24 right-6 z-50 flex h-[32rem] w-[23rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-300/40"
           >
             <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white p-4">
@@ -163,16 +211,23 @@ function ChatBot() {
                   <Bot className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900">Abdul’s AI Assistant</h3>
-                  <p className="text-xs text-slate-500">Live portfolio chatbot</p>
+                  <h3 className="font-semibold text-slate-900">
+                    Abdul’s AI Assistant
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    Live portfolio chatbot
+                  </p>
                 </div>
               </div>
             </div>
 
             <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/60 p-4">
               {messages.map((message, index) => (
-                <div
+                <motion.div
                   key={`${message.role}-${index}`}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
                   className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                     message.role === "assistant"
                       ? "bg-white text-slate-700 shadow-sm"
@@ -180,7 +235,7 @@ function ChatBot() {
                   }`}
                 >
                   {message.content}
-                </div>
+                </motion.div>
               ))}
               {loading && (
                 <div className="max-w-[85%] rounded-2xl bg-white px-4 py-3 text-sm text-slate-500 shadow-sm">
@@ -232,13 +287,26 @@ function ChatBot() {
 export default function Page() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  useEffect(() => {
+    const html = document.documentElement;
+    const previousScrollBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = "smooth";
+
+    return () => {
+      html.style.scrollBehavior = previousScrollBehavior;
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-slate-700">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_right,rgba(148,163,184,0.08),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.05),transparent_26%)]" />
 
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <a href="#home" className="flex items-center gap-3 font-semibold tracking-tight text-slate-900">
+          <a
+            href="#home"
+            className="flex items-center gap-3 font-semibold tracking-tight text-slate-900"
+          >
             <span className="rounded-2xl bg-slate-900 p-2 text-white">
               <Sparkles className="h-4 w-4" />
             </span>
@@ -261,135 +329,253 @@ export default function Page() {
             onClick={() => setMobileOpen((v) => !v)}
             className="rounded-xl border border-slate-200 p-2 text-slate-700 md:hidden"
           >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </div>
 
-        {mobileOpen && (
-          <div className="border-t border-slate-200 bg-white md:hidden">
-            <div className="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6 lg:px-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-xl px-3 py-3 text-sm text-slate-700 hover:bg-slate-50"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="overflow-hidden border-t border-slate-200 bg-white md:hidden"
+            >
+              <div className="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6 lg:px-8">
+                {navItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-xl px-3 py-3 text-sm text-slate-700 hover:bg-slate-50"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <Section id="home" eyebrow="AI / ML / GenAI" title="Building intelligent systems with ML, Data, and GenAI.">
-          <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-            <div>
-              <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-                I’m <span className="font-semibold text-slate-900">Abdul Rahman</span>, an AI/ML Engineer Specializing in GenAI, focused on building scalable, data driven systems that transform complex problems into intelligent digital solution. 
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="#projects"
-                  className="rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
-                >
-                  View Projects
-                </a>
-                <a
-                  href="/resume.pdf"
-                  className="rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
-                >
-                  Download Resume
-                </a>
+        <Section
+          id="home"
+          eyebrow="AI / ML / GenAI"
+          title="Building intelligent systems with ML, Data, and GenAI."
+        >
+          <motion.div
+            className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            <Reveal>
+              <div>
+                <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+                  I’m{" "}
+                  <span className="font-semibold text-slate-900">
+                    Abdul Rahman
+                  </span>
+                  , an AI/ML Engineer Specializing in GenAI, focused on building
+                  scalable, data driven systems that transform complex problems
+                  into intelligent digital solution.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href="#projects"
+                    className="rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+                  >
+                    View Projects
+                  </a>
+                  <a
+                    href="/resume.pdf"
+                    className="rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+                  >
+                    Download Resume
+                  </a>
+                </div>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-xl shadow-slate-200/60">
-              <div className="rounded-[1.5rem] border border-slate-100 bg-white p-6">
-                <div className="mb-6 flex items-center gap-3">
-                  <div className="rounded-2xl bg-slate-900 p-3 text-white">
-                    <Brain className="h-5 w-5" />
+            <Reveal>
+              <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-xl shadow-slate-200/60">
+                <div className="rounded-[1.5rem] border border-slate-100 bg-white p-6">
+                  <div className="mb-6 flex items-center gap-3">
+                    <div className="rounded-2xl bg-slate-900 p-3 text-white">
+                      <Brain className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900">
+                        Focus Areas
+                      </p>
+                      <p className="text-sm text-slate-500">
+                        Current learning and career direction
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-slate-900">Focus Areas</p>
-                    <p className="text-sm text-slate-500">Current learning and career direction</p>
-                  </div>
-                </div>
-                <div className="space-y-4 text-sm text-slate-600">
-                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                    <p className="font-medium text-slate-900">Machine Learning</p>
-                    <p className="mt-1">Building a strong base in applied ML, model development, and structured problem solving.</p>
-                  </div>
-                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                    <p className="font-medium text-slate-900">Data + SQL</p>
-                    <p className="mt-1">Using data analysis and query skills to support insights, pipelines, and decision-making.</p>
-                  </div>
-                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                    <p className="font-medium text-slate-900">GenAI</p>
-                    <p className="mt-1">Exploring practical AI interfaces, assistants, and portfolio ready product experiences.</p>
+                  <div className="space-y-4 text-sm text-slate-600">
+                    <motion.div
+                      variants={fadeUp}
+                      className="rounded-2xl border border-slate-100 bg-slate-50 p-4"
+                    >
+                      <p className="font-medium text-slate-900">
+                        Machine Learning
+                      </p>
+                      <p className="mt-1">
+                        Building a strong base in applied ML, model development,
+                        and structured problem solving.
+                      </p>
+                    </motion.div>
+                    <motion.div
+                      variants={fadeUp}
+                      className="rounded-2xl border border-slate-100 bg-slate-50 p-4"
+                    >
+                      <p className="font-medium text-slate-900">Data + SQL</p>
+                      <p className="mt-1">
+                        Using data analysis and query skills to support insights,
+                        pipelines, and decision-making.
+                      </p>
+                    </motion.div>
+                    <motion.div
+                      variants={fadeUp}
+                      className="rounded-2xl border border-slate-100 bg-slate-50 p-4"
+                    >
+                      <p className="font-medium text-slate-900">GenAI</p>
+                      <p className="mt-1">
+                        Exploring practical AI interfaces, assistants, and
+                        portfolio ready product experiences.
+                      </p>
+                    </motion.div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </Reveal>
+          </motion.div>
         </Section>
 
-        <Section id="about" eyebrow="About Abdul Rahman" title="A bit about who I am and what I do!">
-  <div className="grid gap-6 lg:grid-cols-2">
-    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
-      <div className="mb-5 flex items-center gap-3">
-        <div className="rounded-2xl bg-slate-900 p-3 text-white">
-          <Atom className="h-5 w-5" />
-        </div>
-        <div>
-          <p className="text-lg font-semibold text-slate-900">AI/ML Engineer focused on GenAI</p>
-          <p className="text-sm text-slate-500">Machine learning, intelligent systems, and scalable AI applications</p>
-        </div>
-      </div>
+        <Section
+          id="about"
+          eyebrow="About Abdul Rahman"
+          title="A bit about who I am and what I do!"
+        >
+          <motion.div
+            className="grid gap-6 lg:grid-cols-2"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            <motion.div
+              variants={fadeUp}
+              className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40"
+            >
+              <div className="mb-5 flex items-center gap-3">
+                <div className="rounded-2xl bg-slate-900 p-3 text-white">
+                  <Atom className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-lg font-semibold text-slate-900">
+                    AI/ML Engineer focused on GenAI
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    Machine learning, intelligent systems, and scalable AI
+                    applications
+                  </p>
+                </div>
+              </div>
 
-      <p className="text-base leading-8 text-slate-600">
-        I’m an AI/ML Engineer with a strong focus on GenAI, based in Chicago and currently pursuing a Master’s in Artificial Intelligence. I build intelligent and data-driven systems by combining machine learning, structured problem solving, and modern AI technologies.
-      </p>
+              <p className="text-base leading-8 text-slate-600">
+                I’m an AI/ML Engineer with a strong focus on GenAI, based in
+                Chicago and currently pursuing a Master’s in Artificial
+                Intelligence. I build intelligent and data-driven systems by
+                combining machine learning, structured problem solving, and
+                modern AI technologies.
+              </p>
 
-      <p className="mt-5 text-base leading-8 text-slate-600">
-        My work focuses on developing scalable applications that integrate predictive modeling, natural language processing, and interactive user experiences. I’m particularly interested in building practical AI systems that demonstrate technical depth, strong usability, and thoughtful design.
-      </p>
-    </div>
+              <p className="mt-5 text-base leading-8 text-slate-600">
+                My work focuses on developing scalable applications that
+                integrate predictive modeling, natural language processing, and
+                interactive user experiences. I’m particularly interested in
+                building practical AI systems that demonstrate technical depth,
+                strong usability, and thoughtful design.
+              </p>
+            </motion.div>
 
-<div className="mb-5 flex items-center gap-3">
-  <div className="rounded-xl bg-slate-900 p-2 text-white">
-    <GraduationCap className="h-4 w-4" />
-</div> <h3 className="text-lg font-semibold text-slate-900">Education</h3>
-  </div>
-<div className="space-y-5">
-    {education.map((item) => (
-      <div
-        key={item.school}
-        className="rounded-2xl border border-slate-100 bg-slate-50 p-5"
-      >
-        <p className="font-semibold text-slate-900">{item.school}</p>
-        <p className="mt-1 text-sm text-slate-700">{item.degree}</p>
-        <p className="mt-1 text-sm text-slate-500">{item.field}</p>
-        <p className="mt-2 text-sm text-slate-500">{item.dates}</p>
-      </div>
-    ))}
-  </div>
-</div>
+            <motion.div
+              variants={fadeUp}
+              className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40"
+            >
+              <div className="mb-5 flex items-center gap-3">
+                <div className="rounded-2xl bg-slate-900 p-3 text-white">
+                  <GraduationCap className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900">
+                  Education
+                </h3>
+              </div>
+
+              <motion.div
+                className="space-y-5"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                {education.map((item) => (
+                  <motion.div
+                    key={item.school}
+                    variants={fadeUp}
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.2 }}
+                    className="rounded-2xl border border-slate-100 bg-slate-50 p-5"
+                  >
+                    <p className="font-semibold text-slate-900">
+                      {item.school}
+                    </p>
+                    <p className="mt-1 text-sm text-slate-700">
+                      {item.degree}
+                    </p>
+                    <p className="mt-1 text-sm text-slate-500">{item.field}</p>
+                    <p className="mt-2 text-sm text-slate-500">{item.dates}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </Section>
 
         <Section id="projects" eyebrow="Projects" title="Featured Project">
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:shadow-xl">
+          <motion.div
+            className="grid gap-6 md:grid-cols-2"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:shadow-xl"
+            >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-semibold text-slate-900">
                     Resume Intelligence
                   </h3>
                   <p className="mt-2 text-slate-600">
-                    Developed an AI-powered resume analysis system that evaluates resumes, extracts key insights,
-                    and provides intelligent feedback using modern NLP and GenAI techniques.
-                    The system is designed to reflect ATS style evaluation and support more informed hiring decisions.
+                    Developed an AI-powered resume analysis system that
+                    evaluates resumes, extracts key insights, and provides
+                    intelligent feedback using modern NLP and GenAI techniques.
+                    The system is designed to reflect ATS style evaluation and
+                    support more informed hiring decisions.
                   </p>
                 </div>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
@@ -431,17 +617,24 @@ export default function Page() {
                   View Code
                 </a>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:shadow-xl">
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:shadow-xl"
+            >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-semibold text-slate-900">
                     AI Stock Prediction + News Sentiment Dashboard
                   </h3>
                   <p className="mt-2 text-slate-600">
-                    Worked on developing an AI based market intelligence dashboard that brings together stock trend and analysis,
-                    technical indicators, and sentiment analysis to present structured and data driven insight.
+                    Worked on developing an AI based market intelligence
+                    dashboard that brings together stock trend and analysis,
+                    technical indicators, and sentiment analysis to present
+                    structured and data driven insight.
                   </p>
                 </div>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
@@ -489,131 +682,173 @@ export default function Page() {
                   View Code
                 </a>
               </div>
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        <Section
+          id="publications"
+          eyebrow="Publications"
+          title="Research & publication work."
+        >
+          <Reveal>
+            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
+              <p className="max-w-2xl text-slate-600">
+                Publication details will be added here as research papers,
+                technical write-ups, and formal contributions are published.
+              </p>
             </div>
-          </div>
+          </Reveal>
         </Section>
 
-        <Section id="publications" eyebrow="Publications" title="Research & publication work.">
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
-            <p className="max-w-2xl text-slate-600">
-              Publication details will be added here as research papers, technical write-ups, and formal contributions are published.
-            </p>
-          </div>
+        <Section
+          id="skills"
+          eyebrow="Skills"
+          title="Skills I use to build intelligent AI/ML Solutions."
+        >
+          <motion.div
+            className="grid gap-6 lg:grid-cols-3"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg"
+            >
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">
+                AI / ML & GenAI
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "PyTorch",
+                  "TensorFlow",
+                  "Scikit-learn",
+                  "LangChain",
+                  "Hugging Face",
+                  "LLMs",
+                  "RAG",
+                  "NLP",
+                  "Computer Vision",
+                  "Deep Learning",
+                  "Prompt Engineering",
+                  "MLOps",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg"
+            >
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">
+                Development & Frameworks
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Python",
+                  "JavaScript",
+                  "React.js",
+                  "Node.js",
+                  "Flask",
+                  "REST APIs",
+                  "Docker",
+                  "Git",
+                  "Linux CLI",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg"
+            >
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">
+                Data, Analytics & Visualization
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "SQL",
+                  "PySpark MLlib",
+                  "Matplotlib",
+                  "Plotly",
+                  "CNN",
+                  "YOLO",
+                  "ResNet",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
         </Section>
-
-        <Section id="skills" eyebrow="Skills" title="Skills I use to build intelligent AI/ML Solutions.">
-  <div className="grid gap-6 lg:grid-cols-3">
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-      <h3 className="mb-4 text-lg font-semibold text-slate-900">AI / ML & GenAI</h3>
-      <div className="flex flex-wrap gap-2">
-        {[
-          "PyTorch",
-          "TensorFlow",
-          "Scikit-learn",
-          "LangChain",
-          "Hugging Face",
-          "LLMs",
-          "RAG",
-          "NLP",
-          "Computer Vision",
-          "Deep Learning",
-          "Prompt Engineering",
-          "MLOps",
-        ].map((skill) => (
-          <span
-            key={skill}
-            className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-      <h3 className="mb-4 text-lg font-semibold text-slate-900">Development & Frameworks</h3>
-      <div className="flex flex-wrap gap-2">
-        {[
-          "Python",
-          "JavaScript",
-          "React.js",
-          "Node.js",
-          "Flask",
-          "REST APIs",
-          "Docker",
-          "Git",
-          "Linux CLI",
-        ].map((skill) => (
-          <span
-            key={skill}
-            className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-      <h3 className="mb-4 text-lg font-semibold text-slate-900">Data, Analytics & Visualization</h3>
-      <div className="flex flex-wrap gap-2">
-        {[
-          "SQL",
-          "PySpark MLlib",
-          "Matplotlib",
-          "Plotly",
-          "CNN",
-          "YOLO",
-          "ResNet",
-        ].map((skill) => (
-          <span
-            key={skill}
-            className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
-    </div>
-  </div>
-</Section>
 
         <Section id="contact" eyebrow="Contact" title="Let’s connect.">
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
-            <div className="mt-2 space-y-4 text-sm text-slate-700">
-              <a
-                href="mailto:abdulxrahman.ai@gmail.com"
-                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
-              >
-                <Mail className="h-4 w-4" />
-                abdulxrahman.ai@gmail.com
-              </a>
-              <a
-                href="https://github.com/abdulxrahman-ai"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
-              >
-                <Github className="h-4 w-4" />
-                GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/abdulxrahman"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
-              >
-                <Linkedin className="h-4 w-4" />
-                LinkedIn
-              </a>
+          <Reveal>
+            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
+              <div className="mt-2 space-y-4 text-sm text-slate-700">
+                <a
+                  href="mailto:abdulxrahman.ai@gmail.com"
+                  className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 transition hover:bg-slate-100"
+                >
+                  <Mail className="h-4 w-4" />
+                  abdulxrahman.ai@gmail.com
+                </a>
+                <a
+                  href="https://github.com/abdulxrahman-ai"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 transition hover:bg-slate-100"
+                >
+                  <Github className="h-4 w-4" />
+                  GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/abdulxrahman"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 transition hover:bg-slate-100"
+                >
+                  <Linkedin className="h-4 w-4" />
+                  LinkedIn
+                </a>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </Section>
       </main>
 
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-sm text-slate-500 lg:flex-row">
-          <p>© 2026 Abdul Rahman. Built for AI/ML, data, and GenAI opportunities.</p>
+          <p>
+            © 2026 Abdul Rahman. Built for AI/ML, data, and GenAI opportunities.
+          </p>
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/abdulxrahman-ai"
