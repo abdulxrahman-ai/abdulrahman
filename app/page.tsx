@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Bot,
+  Briefcase,
   Network,
   Cpu,
   Atom,
