@@ -493,7 +493,7 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section id="skills" eyebrow="Skills" title="Core technical skills for AI/ML and GenAI engineering.">
+        <Section id="skills" eyebrow="Skills" title="Skills I use to build intelligent AI/ML Solutions.">
   <div className="grid gap-6 lg:grid-cols-3">
     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
       <h3 className="mb-4 text-lg font-semibold text-slate-900">AI / ML & GenAI</h3>
