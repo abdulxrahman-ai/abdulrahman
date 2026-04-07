@@ -494,79 +494,81 @@ export default function Page() {
         </Section>
 
         <Section id="skills" eyebrow="Skills" title="Core technical skills for AI/ML and GenAI engineering.">
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-              <h3 className="mb-4 text-lg font-semibold text-slate-900">AI / ML & GenAI</h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "PyTorch",
-                  "TensorFlow",
-                  "Scikit-learn",
-                  "LangChain",
-                  "Hugging Face",
-                  "LLMs",
-                  "RAG",
-                  "NLP",
-                  "Computer Vision",
-                  "Deep Learning",
-                  "Prompt Engineering",
-                  "MLOps",
-                ].map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+  <div className="grid gap-6 lg:grid-cols-3">
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+      <h3 className="mb-4 text-lg font-semibold text-slate-900">AI / ML & GenAI</h3>
+      <div className="flex flex-wrap gap-2">
+        {[
+          "PyTorch",
+          "TensorFlow",
+          "Scikit-learn",
+          "LangChain",
+          "Hugging Face",
+          "LLMs",
+          "RAG",
+          "NLP",
+          "Computer Vision",
+          "Deep Learning",
+          "Prompt Engineering",
+          "MLOps",
+        ].map((skill) => (
+          <span
+            key={skill}
+            className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-              <h3 className="mb-4 text-lg font-semibold text-slate-900">Development & Frameworks</h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Python",
-                  "JavaScript",
-                  "React.js",
-                  "Node.js",
-                  "Flask",
-                  "REST APIs",
-                  "Docker",
-                  "Git",
-                  "Linux CLI",
-                ].map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+      <h3 className="mb-4 text-lg font-semibold text-slate-900">Development & Frameworks</h3>
+      <div className="flex flex-wrap gap-2">
+        {[
+          "Python",
+          "JavaScript",
+          "React.js",
+          "Node.js",
+          "Flask",
+          "REST APIs",
+          "Docker",
+          "Git",
+          "Linux CLI",
+        ].map((skill) => (
+          <span
+            key={skill}
+            className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-              <h3 className="mb-4 text-lg font-semibold text-slate-900">Data, Analytics & Visualization</h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "SQL",
-                  "PySpark MLlib",
-                  "Matplotlib",
-                  "Plotly",
-                  "CNN",
-                  "YOLO",
-                  "ResNet",
-                ].map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+      <h3 className="mb-4 text-lg font-semibold text-slate-900">Data, Analytics & Visualization</h3>
+      <div className="flex flex-wrap gap-2">
+        {[
+          "SQL",
+          "PySpark MLlib",
+          "Matplotlib",
+          "Plotly",
+          "CNN",
+          "YOLO",
+          "ResNet",
+        ].map((skill) => (
+          <span
+            key={skill}
+            className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>
 
         <Section id="contact" eyebrow="Contact" title="Let’s connect.">
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
