@@ -336,7 +336,9 @@ export default function Page() {
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
               <p className="text-base leading-8 text-slate-600">
-                Abdul Rahman is an aspiring AI/ML Engineer, Data Scientist, and GenAI-focused professional currently based in Chicago, Illinois. He is pursuing a Master&apos;s in Artificial Intelligence at Avila University and building a portfolio centered around machine learning, data-driven thinking, and modern AI experiences. His background combines technical curiosity with communication and technology management, helping him approach problems with both analytical depth and practical clarity.
+                Im an AI/ML Engineer and I bring a balance between building intelligent systems and ensuring that they are actually useable and effective in practice. Many Engineer out there focus only on developing models, while others focus only on applications. I work across both from desiging the system to thinking through how it integrates into meaningful workflows.
+                My approach is centered on building systems that are not only technically soundbut also intuitive and practical to use. Whether its a Machine Learning pipelines, NLP driven applications or AI powered interfaces, I focus on delivering solutions that translate complexity into clear and useable outcomes.
+                The mindset also extends to how I work with AI itself. I don't just apply tools I focus on understanding the underlying concepts and design decisions behind them. This allows me to build system with greater Clarity, Adaptiblity and Long-Term Value.
               </p>
             </div>
             <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
