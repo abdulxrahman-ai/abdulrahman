@@ -333,29 +333,42 @@ export default function Page() {
         </Section>
 
         <Section id="about" eyebrow="About Abdul" title="">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
-              <p className="text-base leading-8 text-slate-600">
-                Im an AI/ML Engineer and I bring a balance between building intelligent systems and ensuring that they are actually usable and effective in practice. Many Engineer out there focus only on developing models, while others focus only on applications. I work across both from desiging the system to thinking through how it integrates into meaningful workflows.
-                My approach is centered on building systems that are not only technically sound but also intuitive and practical to use. Whether its a Machine Learning pipelines, NLP driven applications or AI powered interfaces, I focus on delivering solutions that translate complexity into clear and usable outcomes.
-                The mindset also extends to how I work with AI itself. I don't just apply tools I focus on understanding the underlying concepts and design decisions behind them. This allows me to build system with greater Clarity, Adaptiblity and Long-Term Value.
-              </p>
-            </div>
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
-              <h3 className="mb-5 text-lg font-semibold text-slate-900">Education</h3>
-              <div className="space-y-5">
-                {education.map((item) => (
-                  <div key={item.school} className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-                    <p className="font-semibold text-slate-900">{item.school}</p>
-                    <p className="mt-1 text-sm text-slate-700">{item.degree}</p>
-                    <p className="mt-1 text-sm text-slate-500">{item.field}</p>
-                    <p className="mt-2 text-sm text-slate-500">{item.dates}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+  <div className="grid gap-6 lg:grid-cols-2">
+    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
+      <div className="mb-5 flex items-center gap-3">
+        <div className="rounded-2xl bg-slate-900 p-3 text-white">
+          <Brain className="h-5 w-5" />
+        </div>
+        <div>
+          <p className="text-lg font-semibold text-slate-900">AI/ML Engineer focused on GenAI</p>
+          <p className="text-sm text-slate-500">Machine learning, intelligent systems, and scalable AI applications</p>
+        </div>
+      </div>
+
+      <p className="text-base leading-8 text-slate-600">
+        I’m an AI/ML Engineer with a strong focus on GenAI, based in Chicago and currently pursuing a Master’s in Artificial Intelligence. I build intelligent, data-driven systems by combining machine learning, structured problem solving, and modern AI technologies.
+      </p>
+
+      <p className="mt-5 text-base leading-8 text-slate-600">
+        My work focuses on developing scalable applications that integrate predictive modeling, natural language processing, and interactive user experiences. I’m particularly interested in building practical AI systems that demonstrate technical depth, strong usability, and thoughtful design.
+      </p>
+    </div>
+
+    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40">
+      <h3 className="mb-5 text-lg font-semibold text-slate-900">Education</h3>
+      <div className="space-y-5">
+        {education.map((item) => (
+          <div key={item.school} className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
+            <p className="font-semibold text-slate-900">{item.school}</p>
+            <p className="mt-1 text-sm text-slate-700">{item.degree}</p>
+            <p className="mt-1 text-sm text-slate-500">{item.field}</p>
+            <p className="mt-2 text-sm text-slate-500">{item.dates}</p>
           </div>
-        </Section>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>
 
         <Section id="projects" eyebrow="Projects" title="Featured Project">
           <div className="grid gap-6 md:grid-cols-2">
