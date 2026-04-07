@@ -568,29 +568,6 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-              <h3 className="mb-4 text-lg font-semibold text-slate-900">Cloud, Systems & Infrastructure</h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "AWS",
-                  "Azure",
-                  "Google Cloud Platform",
-                  "Linux (Ubuntu)",
-                  "System-Level Debugging",
-                  "Hardware-Software Integration",
-                ].map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Section>
-
         <Section id="contact" eyebrow="Contact" title="Let’s connect.">
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
             <div className="mt-2 space-y-4 text-sm text-slate-700">
