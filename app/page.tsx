@@ -1,24 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  Atom,
   Bot,
-  Briefcase,
   Brain,
+  Briefcase,
   FileText,
   Github,
   GraduationCap,
-  Home,
   Linkedin,
   Mail,
   Menu,
   MessageCircle,
   Send,
   Sparkles,
-  User,
   X,
-  Atom,
 } from "lucide-react";
 
 type Message = {
@@ -27,12 +25,12 @@ type Message = {
 };
 
 const navItems = [
-  { id: "home", label: "Home", icon: Home },
-  { id: "about", label: "About", icon: User },
-  { id: "projects", label: "Projects", icon: Briefcase },
-  { id: "publications", label: "Publications", icon: FileText },
-  { id: "skills", label: "Skills", icon: Brain },
-  { id: "contact", label: "Contact", icon: Mail },
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "publications", label: "Publications" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
 ];
 
 const education = [
@@ -53,44 +51,6 @@ const education = [
 const starterMessage =
   "Hi, I’m Abdul’s AI assistant. Ask me about his background, skills, and projects.";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-const staggerContainer = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-function Reveal({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 function Section({
   id,
   title,
@@ -106,10 +66,10 @@ function Section({
     <motion.section
       id={id}
       className="scroll-mt-24 py-16 sm:py-20"
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.12 }}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.55 }}
     >
       <div className="mb-8">
         <p className="mb-2 text-sm font-medium uppercase tracking-[0.25em] text-slate-500">
@@ -140,6 +100,7 @@ function ChatBot() {
       ...messages,
       { role: "user", content: value },
     ];
+
     setMessages(nextMessages);
     setInput("");
     setLoading(true);
@@ -151,7 +112,7 @@ function ChatBot() {
         body: JSON.stringify({ messages: nextMessages }),
       });
 
-      const data = (await res.json()) as { reply?: string };
+      const data: { reply?: string } = await res.json();
 
       setMessages((prev) => [
         ...prev,
@@ -202,7 +163,7 @@ function ChatBot() {
             initial={{ opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            transition={{ duration: 0.25 }}
             className="fixed bottom-24 right-6 z-50 flex h-[32rem] w-[23rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-300/40"
           >
             <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white p-4">
@@ -214,20 +175,15 @@ function ChatBot() {
                   <h3 className="font-semibold text-slate-900">
                     Abdul’s AI Assistant
                   </h3>
-                  <p className="text-xs text-slate-500">
-                    Live portfolio chatbot
-                  </p>
+                  <p className="text-xs text-slate-500">Live portfolio chatbot</p>
                 </div>
               </div>
             </div>
 
             <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/60 p-4">
               {messages.map((message, index) => (
-                <motion.div
+                <div
                   key={`${message.role}-${index}`}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
                   className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                     message.role === "assistant"
                       ? "bg-white text-slate-700 shadow-sm"
@@ -235,8 +191,9 @@ function ChatBot() {
                   }`}
                 >
                   {message.content}
-                </motion.div>
+                </div>
               ))}
+
               {loading && (
                 <div className="max-w-[85%] rounded-2xl bg-white px-4 py-3 text-sm text-slate-500 shadow-sm">
                   Thinking...
@@ -249,7 +206,9 @@ function ChatBot() {
                 {quickQuestions.map((q) => (
                   <button
                     key={q}
-                    onClick={() => void sendMessage(q)}
+                    onClick={() => {
+                      void sendMessage(q);
+                    }}
                     className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-700 transition hover:bg-slate-50"
                   >
                     {q}
@@ -270,7 +229,9 @@ function ChatBot() {
                   className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-slate-300"
                 />
                 <button
-                  onClick={() => void sendMessage()}
+                  onClick={() => {
+                    void sendMessage();
+                  }}
                   className="rounded-2xl bg-slate-900 p-3 text-white transition hover:opacity-90"
                 >
                   <Send className="h-4 w-4" />
@@ -288,12 +249,10 @@ export default function Page() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const html = document.documentElement;
-    const previousScrollBehavior = html.style.scrollBehavior;
-    html.style.scrollBehavior = "smooth";
+    document.documentElement.style.scrollBehavior = "smooth";
 
     return () => {
-      html.style.scrollBehavior = previousScrollBehavior;
+      document.documentElement.style.scrollBehavior = "";
     };
   }, []);
 
@@ -337,30 +296,22 @@ export default function Page() {
           </button>
         </div>
 
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="overflow-hidden border-t border-slate-200 bg-white md:hidden"
-            >
-              <div className="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6 lg:px-8">
-                {navItems.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    onClick={() => setMobileOpen(false)}
-                    className="rounded-xl px-3 py-3 text-sm text-slate-700 hover:bg-slate-50"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {mobileOpen && (
+          <div className="border-t border-slate-200 bg-white md:hidden">
+            <div className="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6 lg:px-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-xl px-3 py-3 text-sm text-slate-700 hover:bg-slate-50"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </header>
 
       <main className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -369,95 +320,78 @@ export default function Page() {
           eyebrow="AI / ML / GenAI"
           title="Building intelligent systems with ML, Data, and GenAI."
         >
-          <motion.div
-            className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            <Reveal>
-              <div>
-                <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-                  I’m{" "}
-                  <span className="font-semibold text-slate-900">
-                    Abdul Rahman
-                  </span>
-                  , an AI/ML Engineer Specializing in GenAI, focused on building
-                  scalable, data driven systems that transform complex problems
-                  into intelligent digital solution.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href="#projects"
-                    className="rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
-                  >
-                    View Projects
-                  </a>
-                  <a
-                    href="/resume.pdf"
-                    className="rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
-                  >
-                    Download Resume
-                  </a>
-                </div>
-              </div>
-            </Reveal>
+          <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+                I’m <span className="font-semibold text-slate-900">Abdul Rahman</span>, an AI/ML Engineer Specializing in GenAI, focused on building scalable, data driven systems that transform complex problems into intelligent digital solution.
+              </p>
 
-            <Reveal>
-              <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-xl shadow-slate-200/60">
-                <div className="rounded-[1.5rem] border border-slate-100 bg-white p-6">
-                  <div className="mb-6 flex items-center gap-3">
-                    <div className="rounded-2xl bg-slate-900 p-3 text-white">
-                      <Brain className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">
-                        Focus Areas
-                      </p>
-                      <p className="text-sm text-slate-500">
-                        Current learning and career direction
-                      </p>
-                    </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#projects"
+                  className="rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+                >
+                  View Projects
+                </a>
+                <a
+                  href="/resume.pdf"
+                  className="rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+                >
+                  Download Resume
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55 }}
+              className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-xl shadow-slate-200/60"
+            >
+              <div className="rounded-[1.5rem] border border-slate-100 bg-white p-6">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="rounded-2xl bg-slate-900 p-3 text-white">
+                    <Brain className="h-5 w-5" />
                   </div>
-                  <div className="space-y-4 text-sm text-slate-600">
-                    <motion.div
-                      variants={fadeUp}
-                      className="rounded-2xl border border-slate-100 bg-slate-50 p-4"
-                    >
-                      <p className="font-medium text-slate-900">
-                        Machine Learning
-                      </p>
-                      <p className="mt-1">
-                        Building a strong base in applied ML, model development,
-                        and structured problem solving.
-                      </p>
-                    </motion.div>
-                    <motion.div
-                      variants={fadeUp}
-                      className="rounded-2xl border border-slate-100 bg-slate-50 p-4"
-                    >
-                      <p className="font-medium text-slate-900">Data + SQL</p>
-                      <p className="mt-1">
-                        Using data analysis and query skills to support insights,
-                        pipelines, and decision-making.
-                      </p>
-                    </motion.div>
-                    <motion.div
-                      variants={fadeUp}
-                      className="rounded-2xl border border-slate-100 bg-slate-50 p-4"
-                    >
-                      <p className="font-medium text-slate-900">GenAI</p>
-                      <p className="mt-1">
-                        Exploring practical AI interfaces, assistants, and
-                        portfolio ready product experiences.
-                      </p>
-                    </motion.div>
+                  <div>
+                    <p className="font-semibold text-slate-900">Focus Areas</p>
+                    <p className="text-sm text-slate-500">
+                      Current learning and career direction
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 transition duration-300 hover:-translate-y-1">
+                    <p className="font-medium text-slate-900">Machine Learning</p>
+                    <p className="mt-1">
+                      Building a strong base in applied ML, model development, and structured problem solving.
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 transition duration-300 hover:-translate-y-1">
+                    <p className="font-medium text-slate-900">Data + SQL</p>
+                    <p className="mt-1">
+                      Using data analysis and query skills to support insights, pipelines, and decision-making.
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 transition duration-300 hover:-translate-y-1">
+                    <p className="font-medium text-slate-900">GenAI</p>
+                    <p className="mt-1">
+                      Exploring practical AI interfaces, assistants, and portfolio ready product experiences.
+                    </p>
                   </div>
                 </div>
               </div>
-            </Reveal>
-          </motion.div>
+            </motion.div>
+          </div>
         </Section>
 
         <Section
@@ -465,15 +399,12 @@ export default function Page() {
           eyebrow="About Abdul Rahman"
           title="A bit about who I am and what I do!"
         >
-          <motion.div
-            className="grid gap-6 lg:grid-cols-2"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-          >
+          <div className="grid gap-6 lg:grid-cols-2">
             <motion.div
-              variants={fadeUp}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55 }}
               className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40"
             >
               <div className="mb-5 flex items-center gap-3">
@@ -485,31 +416,25 @@ export default function Page() {
                     AI/ML Engineer focused on GenAI
                   </p>
                   <p className="text-sm text-slate-500">
-                    Machine learning, intelligent systems, and scalable AI
-                    applications
+                    Machine learning, intelligent systems, and scalable AI applications
                   </p>
                 </div>
               </div>
 
               <p className="text-base leading-8 text-slate-600">
-                I’m an AI/ML Engineer with a strong focus on GenAI, based in
-                Chicago and currently pursuing a Master’s in Artificial
-                Intelligence. I build intelligent and data-driven systems by
-                combining machine learning, structured problem solving, and
-                modern AI technologies.
+                I’m an AI/ML Engineer with a strong focus on GenAI, based in Chicago and currently pursuing a Master’s in Artificial Intelligence. I build intelligent and data-driven systems by combining machine learning, structured problem solving, and modern AI technologies.
               </p>
 
               <p className="mt-5 text-base leading-8 text-slate-600">
-                My work focuses on developing scalable applications that
-                integrate predictive modeling, natural language processing, and
-                interactive user experiences. I’m particularly interested in
-                building practical AI systems that demonstrate technical depth,
-                strong usability, and thoughtful design.
+                My work focuses on developing scalable applications that integrate predictive modeling, natural language processing, and interactive user experiences. I’m particularly interested in building practical AI systems that demonstrate technical depth, strong usability, and thoughtful design.
               </p>
             </motion.div>
 
             <motion.div
-              variants={fadeUp}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6 }}
               className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40"
             >
               <div className="mb-5 flex items-center gap-3">
@@ -521,49 +446,31 @@ export default function Page() {
                 </h3>
               </div>
 
-              <motion.div
-                className="space-y-5"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
-              >
+              <div className="space-y-5">
                 {education.map((item) => (
-                  <motion.div
+                  <div
                     key={item.school}
-                    variants={fadeUp}
-                    whileHover={{ y: -3 }}
-                    transition={{ duration: 0.2 }}
-                    className="rounded-2xl border border-slate-100 bg-slate-50 p-5"
+                    className="rounded-2xl border border-slate-100 bg-slate-50 p-5 transition duration-300 hover:-translate-y-1"
                   >
-                    <p className="font-semibold text-slate-900">
-                      {item.school}
-                    </p>
-                    <p className="mt-1 text-sm text-slate-700">
-                      {item.degree}
-                    </p>
+                    <p className="font-semibold text-slate-900">{item.school}</p>
+                    <p className="mt-1 text-sm text-slate-700">{item.degree}</p>
                     <p className="mt-1 text-sm text-slate-500">{item.field}</p>
                     <p className="mt-2 text-sm text-slate-500">{item.dates}</p>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
         </Section>
 
         <Section id="projects" eyebrow="Projects" title="Featured Project">
-          <motion.div
-            className="grid gap-6 md:grid-cols-2"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-          >
+          <div className="grid gap-6 md:grid-cols-2">
             <motion.div
-              variants={fadeUp}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25 }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:shadow-xl"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -571,11 +478,9 @@ export default function Page() {
                     Resume Intelligence
                   </h3>
                   <p className="mt-2 text-slate-600">
-                    Developed an AI-powered resume analysis system that
-                    evaluates resumes, extracts key insights, and provides
-                    intelligent feedback using modern NLP and GenAI techniques.
-                    The system is designed to reflect ATS style evaluation and
-                    support more informed hiring decisions.
+                    Developed an AI-powered resume analysis system that evaluates resumes, extracts key insights,
+                    and provides intelligent feedback using modern NLP and GenAI techniques.
+                    The system is designed to reflect ATS style evaluation and support more informed hiring decisions.
                   </p>
                 </div>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
@@ -584,18 +489,10 @@ export default function Page() {
               </div>
 
               <div className="mt-6 flex flex-wrap gap-2">
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  Python
-                </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  Streamlit
-                </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  OpenAI
-                </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  NLP
-                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Python</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Streamlit</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">OpenAI</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">NLP</span>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-4">
@@ -620,10 +517,11 @@ export default function Page() {
             </motion.div>
 
             <motion.div
-              variants={fadeUp}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25 }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:shadow-xl"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -631,10 +529,8 @@ export default function Page() {
                     AI Stock Prediction + News Sentiment Dashboard
                   </h3>
                   <p className="mt-2 text-slate-600">
-                    Worked on developing an AI based market intelligence
-                    dashboard that brings together stock trend and analysis,
-                    technical indicators, and sentiment analysis to present
-                    structured and data driven insight.
+                    Worked on developing an AI based market intelligence dashboard that brings together stock trend and analysis,
+                    technical indicators, and sentiment analysis to present structured and data driven insight.
                   </p>
                 </div>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
@@ -643,24 +539,12 @@ export default function Page() {
               </div>
 
               <div className="mt-6 flex flex-wrap gap-2">
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  Python
-                </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  Streamlit
-                </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  Machine Learning
-                </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  NLP
-                </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  yFinance
-                </span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  Plotly
-                </span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Python</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Streamlit</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Machine Learning</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">NLP</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">yFinance</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Plotly</span>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-4">
@@ -683,7 +567,7 @@ export default function Page() {
                 </a>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </Section>
 
         <Section
@@ -691,14 +575,11 @@ export default function Page() {
           eyebrow="Publications"
           title="Research & publication work."
         >
-          <Reveal>
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
-              <p className="max-w-2xl text-slate-600">
-                Publication details will be added here as research papers,
-                technical write-ups, and formal contributions are published.
-              </p>
-            </div>
-          </Reveal>
+          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
+            <p className="max-w-2xl text-slate-600">
+              Publication details will be added here as research papers, technical write-ups, and formal contributions are published.
+            </p>
+          </div>
         </Section>
 
         <Section
@@ -706,22 +587,15 @@ export default function Page() {
           eyebrow="Skills"
           title="Skills I use to build intelligent AI/ML Solutions."
         >
-          <motion.div
-            className="grid gap-6 lg:grid-cols-3"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-          >
+          <div className="grid gap-6 lg:grid-cols-3">
             <motion.div
-              variants={fadeUp}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25 }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:-translate-y-1"
             >
-              <h3 className="mb-4 text-lg font-semibold text-slate-900">
-                AI / ML & GenAI
-              </h3>
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">AI / ML & GenAI</h3>
               <div className="flex flex-wrap gap-2">
                 {[
                   "PyTorch",
@@ -748,14 +622,13 @@ export default function Page() {
             </motion.div>
 
             <motion.div
-              variants={fadeUp}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25 }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:-translate-y-1"
             >
-              <h3 className="mb-4 text-lg font-semibold text-slate-900">
-                Development & Frameworks
-              </h3>
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">Development & Frameworks</h3>
               <div className="flex flex-wrap gap-2">
                 {[
                   "Python",
@@ -779,14 +652,13 @@ export default function Page() {
             </motion.div>
 
             <motion.div
-              variants={fadeUp}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25 }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.65 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:-translate-y-1"
             >
-              <h3 className="mb-4 text-lg font-semibold text-slate-900">
-                Data, Analytics & Visualization
-              </h3>
+              <h3 className="mb-4 text-lg font-semibold text-slate-900">Data, Analytics & Visualization</h3>
               <div className="flex flex-wrap gap-2">
                 {[
                   "SQL",
@@ -806,49 +678,47 @@ export default function Page() {
                 ))}
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </Section>
 
         <Section id="contact" eyebrow="Contact" title="Let’s connect.">
-          <Reveal>
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
-              <div className="mt-2 space-y-4 text-sm text-slate-700">
-                <a
-                  href="mailto:abdulxrahman.ai@gmail.com"
-                  className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 transition hover:bg-slate-100"
-                >
-                  <Mail className="h-4 w-4" />
-                  abdulxrahman.ai@gmail.com
-                </a>
-                <a
-                  href="https://github.com/abdulxrahman-ai"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 transition hover:bg-slate-100"
-                >
-                  <Github className="h-4 w-4" />
-                  GitHub
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/abdulxrahman"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 transition hover:bg-slate-100"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
-                </a>
-              </div>
+          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/30">
+            <div className="mt-2 space-y-4 text-sm text-slate-700">
+              <a
+                href="mailto:abdulxrahman.ai@gmail.com"
+                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
+              >
+                <Mail className="h-4 w-4" />
+                abdulxrahman.ai@gmail.com
+              </a>
+
+              <a
+                href="https://github.com/abdulxrahman-ai"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
+              >
+                <Github className="h-4 w-4" />
+                GitHub
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/abdulxrahman"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 hover:bg-slate-100"
+              >
+                <Linkedin className="h-4 w-4" />
+                LinkedIn
+              </a>
             </div>
-          </Reveal>
+          </div>
         </Section>
       </main>
 
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-sm text-slate-500 lg:flex-row">
-          <p>
-            © 2026 Abdul Rahman. Built for AI/ML, data, and GenAI opportunities.
-          </p>
+          <p>© 2026 Abdul Rahman. Built for AI/ML, data, and GenAI opportunities.</p>
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/abdulxrahman-ai"
