@@ -680,7 +680,7 @@ export default function Page() {
             >
               <div className="pointer-events-none absolute -left-8 top-0 hidden h-32 w-32 rounded-full bg-sky-300/20 blur-3xl sm:block" />
               <p className="mb-5 inline-flex rounded-full border border-white/35 bg-white/35 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-slate-700 backdrop-blur-xl shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
-                ABDUL RAHMAN'S PORTFOLIO
+                ABDUL RAHMAN · AI/ML ENGINEER
               </p>
 
               <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
@@ -704,13 +704,13 @@ export default function Page() {
 
               <div className="mt-8 flex flex-wrap gap-3 text-xs text-slate-600">
                 <span className="rounded-full border border-white/40 bg-white/30 px-3 py-1.5 backdrop-blur-xl">
-                  Glass Morphism
+                  
                 </span>
                 <span className="rounded-full border border-white/40 bg-white/30 px-3 py-1.5 backdrop-blur-xl">
-                  Clay Morphism
+                  
                 </span>
                 <span className="rounded-full border border-white/40 bg-white/30 px-3 py-1.5 backdrop-blur-xl">
-                  3D Scroll Depth
+                  
                 </span>
               </div>
             </motion.div>
