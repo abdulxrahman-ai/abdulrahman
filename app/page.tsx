@@ -705,14 +705,6 @@ export default function Page() {
               <div className="mt-8 flex flex-wrap gap-3 text-xs text-slate-600">
                 <span className="rounded-full border border-white/40 bg-white/30 px-3 py-1.5 backdrop-blur-xl">
                   
-                </span>
-                <span className="rounded-full border border-white/40 bg-white/30 px-3 py-1.5 backdrop-blur-xl">
-                  
-                </span>
-                <span className="rounded-full border border-white/40 bg-white/30 px-3 py-1.5 backdrop-blur-xl">
-                  
-                </span>
-              </div>
             </motion.div>
 
             <HeroScene />
