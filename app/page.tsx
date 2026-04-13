@@ -556,7 +556,7 @@ function ProjectCard({
     href={projectUrl}
     target="_blank"
     rel="noreferrer"
-    className="!bg-blue-600 !text-white !border-blue-600 hover:!bg-blue-700 shadow-[0_12px_30px_rgba(37,99,235,0.35)]"
+    className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 border-blue-200 hover:opacity-90 shadow-[0_10px_30px_rgba(99,102,241,0.15)]"
   >
     View Project
   </GlassPill>
