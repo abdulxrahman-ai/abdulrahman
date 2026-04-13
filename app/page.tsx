@@ -357,7 +357,7 @@ function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: 0.25 }}
-            className={`fixed bottom-24 right-6 z-50 flex h-[32rem] w-[23rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-[2rem] ${liquidGlass}`}
+            className={`fixed bottom-24 right-4 z-50 flex h-[min(32rem,70vh)] w-[min(23rem,calc(100vw-1rem))] max-w-[calc(100vw-1rem)] flex-col overflow-hidden rounded-[2rem] ${liquidGlass} sm:right-6`}
           >
             <div className="border-b border-white/20 bg-white/10 p-4 backdrop-blur-2xl">
               <div className="flex items-center gap-3">
