@@ -145,9 +145,8 @@ function Section({
     offset: ["start 85%", "end 15%"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [70, -20]);
-  const opacity = useTransform(scrollYProgress, [0, 0.25, 1], [0.55, 1, 1]);
-  const rotateX = useTransform(scrollYProgress, [0, 1], [10, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.25, 1], [0.7, 1, 1]);
 
   return (
     <motion.section
@@ -157,9 +156,6 @@ function Section({
       style={{
         y,
         opacity,
-        rotateX,
-        transformPerspective: 1200,
-        transformStyle: "preserve-3d",
       }}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -231,23 +227,6 @@ function TiltCard({
   );
 }
 
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={reset}
-      style={{
-        rotateX: springX,
-        rotateY: springY,
-        transformPerspective: 1400,
-        transformStyle: "preserve-3d",
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 function GlassPill({
   children,
