@@ -64,17 +64,34 @@ const clay =
   "border border-white/50 bg-white/75 shadow-[inset_-8px_-8px_18px_rgba(255,255,255,0.9),inset_8px_8px_18px_rgba(148,163,184,0.14),0_14px_40px_rgba(15,23,42,0.10)]";
 
 function MouseGlow() {
+  const [enabled, setEnabled] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px) and (pointer: fine)");
+
+    const update = () => setEnabled(media.matches);
+    update();
+
     const move = (e: MouseEvent) => {
       x.set(e.clientX - 160);
       y.set(e.clientY - 160);
     };
-    window.addEventListener("mousemove", move, { passive: true });
-    return () => window.removeEventListener("mousemove", move);
+
+    media.addEventListener("change", update);
+
+    if (media.matches) {
+      window.addEventListener("mousemove", move, { passive: true });
+    }
+
+    return () => {
+      media.removeEventListener("change", update);
+      window.removeEventListener("mousemove", move);
+    };
   }, [x, y]);
+
+  if (!enabled) return null;
 
   return (
     <motion.div
@@ -96,15 +113,15 @@ function FloatingBackground() {
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <motion.div
         style={{ y: y1, rotate: rotate1 }}
-        className="absolute -left-24 top-20 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.18),rgba(96,165,250,0.10),transparent_68%)] blur-3xl"
+        className="absolute -left-24 top-20 hidden h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.18),rgba(96,165,250,0.10),transparent_68%)] blur-3xl md:block"
       />
       <motion.div
         style={{ y: y2, rotate: rotate2 }}
-        className="absolute right-[-6rem] top-[18rem] h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.14),rgba(255,255,255,0.08),transparent_70%)] blur-3xl"
+        className="absolute right-[-6rem] top-[18rem] hidden h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.14),rgba(255,255,255,0.08),transparent_70%)] blur-3xl md:block"
       />
       <motion.div
         style={{ y: y1 }}
-        className="absolute bottom-[-6rem] left-1/3 h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.12),rgba(255,255,255,0.06),transparent_72%)] blur-3xl"
+        className="absolute bottom-[-6rem] left-1/3 hidden h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.12),rgba(255,255,255,0.06),transparent_72%)] blur-3xl md:block"
       />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(148,163,184,0.10),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.08),transparent_30%),linear-gradient(to_bottom,rgba(248,250,252,0.88),rgba(241,245,249,0.94))]" />
       <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(15,23,42,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.35)_1px,transparent_1px)] [background-size:80px_80px]" />
@@ -246,7 +263,7 @@ function GlassPill({
       href={href}
       target={target}
       rel={rel}
-      className={`group inline-flex items-center justify-center rounded-full border border-white/30 bg-white/14 px-6 py-3 text-sm font-medium text-slate-900 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:bg-white/22 hover:shadow-[0_16px_40px_rgba(15,23,42,0.16)] ${className}`}
+     className={`group inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/40 bg-white/60 px-6 py-3 text-sm font-semibold text-slate-900 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:bg-white/80 hover:shadow-[0_16px_40px_rgba(15,23,42,0.16)] ${className}`}
     >
       {children}
     </a>
@@ -512,11 +529,11 @@ function ProjectCard({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.12 }}
         transition={{ duration: 0.55, delay }}
-        whileHover={{ y: -6 }}
+        whileHover={{ y: -4 }}
         className={`group relative h-full overflow-hidden rounded-[2rem] p-[1px] ${glass}`}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.75),transparent_20%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.10),transparent_24%)] opacity-80" />
-        <div className="relative flex h-full flex-col rounded-[calc(2rem-1px)] bg-[linear-gradient(135deg,rgba(255,255,255,0.74),rgba(255,255,255,0.38))] p-6">
+        <div className="relative flex h-full flex-col rounded-[calc(2rem-1px)] bg-[linear-gradient(135deg,rgba(255,255,255,0.74),rgba(255,255,255,0.38))] p-5 sm:p-6">
           <div className="flex items-start justify-between gap-4">
             <div>
               <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
@@ -533,16 +550,25 @@ function ProjectCard({
             ))}
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-4">
-            <GlassPill href={projectUrl} target="_blank" rel="noreferrer" className="bg-slate-900 text-white hover:bg-slate-800">
-              View Project
-            </GlassPill>
+         <div className="mt-6 flex flex-wrap gap-3">
+  <GlassPill
+    href={projectUrl}
+    target="_blank"
+    rel="noreferrer"
+    className="bg-slate-900 !text-white border-slate-900/80 hover:bg-slate-800 shadow-[0_12px_30px_rgba(15,23,42,0.22)]"
+  >
+    View Project
+  </GlassPill>
 
-            <GlassPill href={codeUrl} target="_blank" rel="noreferrer">
-              View Code
-            </GlassPill>
-          </div>
-        </div>
+  <GlassPill
+    href={codeUrl}
+    target="_blank"
+    rel="noreferrer"
+    className="bg-white/80 !text-slate-900 border-white/60 shadow-[0_10px_24px_rgba(15,23,42,0.10)]"
+  >
+    View Code
+  </GlassPill>
+</div>
       </motion.div>
     </TiltCard>
   );
