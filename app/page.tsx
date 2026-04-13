@@ -695,12 +695,19 @@ export default function Page() {
                I'm an AI/ML Engineer Specializing in GenAI, focused on building scalable, data driven systems that transform complex problems into intelligent digital solution.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                className="!bg-blue-600 !text-white !border-blue-600 hover:!bg-blue-700 shadow-[0_12px_30px_rgba(37,99,235,0.35)]"
-                  View Projects
-                </GlassPill>
-                <GlassPill href="/resume.pdf">Download Resume</GlassPill>
-              </div>
+<div className="mt-8 flex flex-wrap gap-3">
+  <GlassPill
+    href="#projects"
+    className="!bg-gradient-to-r !from-blue-100 !to-indigo-100 !text-blue-700 !border-blue-200 hover:opacity-90 shadow-[0_10px_30px_rgba(99,102,241,0.15)]"
+  >
+
+    View Projects
+  </GlassPill>
+
+  <GlassPill href="/resume.pdf">
+    Download Resume
+  </GlassPill>
+</div>
               
             </motion.div>
 
