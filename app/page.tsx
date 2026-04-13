@@ -679,19 +679,19 @@ export default function Page() {
             >
               <div className="pointer-events-none absolute -left-8 top-0 hidden h-32 w-32 rounded-full bg-sky-300/20 blur-3xl sm:block" />
               <p className="mb-5 inline-flex rounded-full border border-white/35 bg-white/35 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-slate-700 backdrop-blur-xl shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
-                Cinematic AI Portfolio
+                ABDUL RAHMAN'S PORTFOLIO
               </p>
 
               <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                Minimal on the surface.{" "}
+               Enjoy working on ideas and turning them into{" "}
                 <span className="bg-gradient-to-r from-slate-900 via-blue-700 to-violet-700 bg-clip-text text-transparent">
-                  Deeply interactive
+                  AI Systems
                 </span>{" "}
-                in motion.
+                people can actually use.
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-                I’m <span className="font-semibold text-slate-900">Abdul Rahman</span>, an AI/ML Engineer Specializing in GenAI, focused on building scalable, data driven systems that transform complex problems into intelligent digital solution.
+               I'm an AI/ML Engineer Specializing in GenAI, focused on building scalable, data driven systems that transform complex problems into intelligent digital solution.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
