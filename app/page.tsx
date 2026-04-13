@@ -698,7 +698,7 @@ export default function Page() {
 <div className="mt-8 flex flex-wrap gap-3">
   <GlassPill
     href="#projects"
-    className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 border-blue-200 hover:opacity-90 shadow-[0_10px_30px_rgba(99,102,241,0.15)]"
+className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue-300 hover:from-sky-200 hover:to-indigo-200 shadow-[0_12px_30px_rgba(99,102,241,0.18)]"
   >
 
     View Projects
