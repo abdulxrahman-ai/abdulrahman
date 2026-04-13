@@ -591,7 +591,6 @@ export default function Page() {
 
               <div className="mt-6 flex flex-wrap gap-2">
                 <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Python</span>
-                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Streamlit</span>
                 <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">GenAI</span>
                 <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">NLP</span>
                 <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">LLMs</span>
