@@ -570,7 +570,8 @@ function ProjectCard({
     View Code
   </GlassPill>
 </div>
-      </motion.div>
+</div>
+        </motion.div>
     </TiltCard>
   );
 }
