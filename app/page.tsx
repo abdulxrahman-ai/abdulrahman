@@ -193,11 +193,11 @@ function TiltCard({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const rotateX = useMotionValue(0);
-  const rotateY = useMotionValue(0);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  const springX = useSpring(rotateX, { stiffness: 180, damping: 18, mass: 0.6 });
-  const springY = useSpring(rotateY, { stiffness: 180, damping: 18, mass: 0.6 });
+  const springX = useSpring(x, { stiffness: 180, damping: 18, mass: 0.6 });
+  const springY = useSpring(y, { stiffness: 180, damping: 18, mass: 0.6 });
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
@@ -205,14 +205,31 @@ function TiltCard({
     const rect = el.getBoundingClientRect();
     const px = (e.clientX - rect.left) / rect.width;
     const py = (e.clientY - rect.top) / rect.height;
-    rotateY.set((px - 0.5) * 10);
-    rotateX.set((0.5 - py) * 10);
+
+    x.set((px - 0.5) * 10);
+    y.set((py - 0.5) * 10);
   };
 
   const reset = () => {
-    rotateX.set(0);
-    rotateY.set(0);
+    x.set(0);
+    y.set(0);
   };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={reset}
+      style={{
+        x: springX,
+        y: springY,
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
   return (
     <motion.div
