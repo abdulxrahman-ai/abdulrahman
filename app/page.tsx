@@ -102,6 +102,23 @@ function MouseGlow() {
   );
 }
 
+    return () => {
+      media.removeEventListener("change", update);
+      window.removeEventListener("mousemove", move);
+    };
+  }, [x, y]);
+
+  if (!enabled) return null;
+
+  return (
+    <motion.div
+      aria-hidden
+      className="pointer-events-none fixed left-0 top-0 z-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.18),rgba(59,130,246,0.10),transparent_70%)] blur-3xl"
+      style={{ x, y }}
+    />
+  );
+}
+
 function FloatingBackground() {
   const { scrollYProgress } = useScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -260]);
