@@ -427,14 +427,13 @@ function HeroScene() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const rotateX = useTransform(scrollYProgress, [0, 1], [0, 10]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 70]);
+const scale = useTransform(scrollYProgress, [0, 1], [1, 0.985]);
 
   return (
     <motion.div
       ref={ref}
-      style={{ y, rotateX, scale, transformPerspective: 1400 }}
+    style={{ y, scale }}
       className={`relative overflow-hidden rounded-[2rem] p-[1px] ${glass}`}
     >
       <div className="relative overflow-hidden rounded-[calc(2rem-1px)] bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(255,255,255,0.36))] p-6 sm:p-7">
