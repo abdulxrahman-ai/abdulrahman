@@ -567,6 +567,57 @@ export default function Page() {
                 </a>
               </div>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.65 }}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    IntervueIQ
+                  </h3>
+                  <p className="mt-2 text-slate-600">
+                    Built an AI-powered interview preparation platform that helps users practice interviews through an interactive and intelligent experience. The project is designed to simulate real-world interview flow, strengthen preparation, and deliver a polished portfolio-ready AI product experience.
+                  </p>
+                </div>
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                  GenAI Project
+                </span>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Python</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Streamlit</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">GenAI</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">NLP</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">LLMs</span>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Hugging Face</span>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-4">
+                <a
+                  href="https://huggingface.co/spaces/abdulxrahman/intervueiq"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
+                >
+                  View Project
+                </a>
+
+                <a
+                  href="https://github.com/abdulxrahman-ai/intervueiq"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-slate-300 px-5 py-2.5 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+                >
+                  View Code
+                </a>
+              </div>
+            </motion.div>
           </div>
         </Section>
 
