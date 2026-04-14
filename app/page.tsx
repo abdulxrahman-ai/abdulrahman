@@ -684,7 +684,7 @@ export default function Page() {
               </p>
 
               <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-               Enjoy working on ideas and turning them into{" "}
+               Working on ideas and turning them into{" "}
                 <span className="bg-gradient-to-r from-slate-900 via-blue-700 to-violet-700 bg-clip-text text-transparent">
                   AI Systems
                 </span>{" "}
