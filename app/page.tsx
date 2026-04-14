@@ -793,16 +793,17 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
 
         <Section id="projects" eyebrow="Projects" title="Featured Project">
           <div className="grid gap-6 md:grid-cols-2">
-            <ProjectCard
-              title="Resume Intelligence"
-              description="Developed an AI-powered resume analysis system that evaluates resumes, extracts key insights, and provides intelligent feedback using modern NLP and GenAI techniques. The system is designed to reflect ATS style evaluation and support more informed hiring decisions."
-              badge="GenAI Project"
-              skills={["Python", "Streamlit", "OpenAI", "NLP"]}
-              projectUrl="https://abdul-resume-intelligence.streamlit.app/"
-              codeUrl="https://github.com/abdulxrahman-ai/resume-intelligence"
-              delay={0}
-            />
 
+           <ProjectCard
+              title="YouTube Intelligence"
+              description="Built an AI-powered YouTube video understanding system that lets users paste a YouTube link, process the content, and ask questions grounded in the video transcript. The project is designed to deliver intelligent retrieval, structured answers, and a polished end-to-end AI product experience."
+              badge="🔥 LLM Application · RAG"
+              skills={["Python", "Streamlit", "FastAPI", "NLP", "LLMs", "RAG"]}
+              projectUrl="https://youtube-intelligence.streamlit.app/"
+              codeUrl="https://github.com/abdulxrahman-ai/youtube-intelligence"
+              delay={0.15}
+            />
+            
             <ProjectCard
               title="AI Stock Prediction + News Sentiment Dashboard"
               description="Worked on developing an AI based market intelligence dashboard that brings together stock trend and analysis, technical indicators, and sentiment analysis to present structured and data driven insight."
@@ -829,15 +830,15 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
               codeUrl="https://github.com/abdulxrahman-ai/intervueiq"
               delay={0.1}
             />
-            
+                        
             <ProjectCard
-              title="YouTube Intelligence"
-              description="Built an AI-powered YouTube video understanding system that lets users paste a YouTube link, process the content, and ask questions grounded in the video transcript. The project is designed to deliver intelligent retrieval, structured answers, and a polished end-to-end AI product experience."
-              badge="AI/ML Project"
-              skills={["Python", "Streamlit", "FastAPI", "NLP", "LLMs", "RAG"]}
-              projectUrl="https://youtube-intelligence.streamlit.app/"
-              codeUrl="https://github.com/abdulxrahman-ai/youtube-intelligence"
-              delay={0.15}
+              title="Resume Intelligence"
+              description="Developed an AI-powered resume analysis system that evaluates resumes, extracts key insights, and provides intelligent feedback using modern NLP and GenAI techniques. The system is designed to reflect ATS style evaluation and support more informed hiring decisions."
+              badge="GenAI Project"
+              skills={["Python", "Streamlit", "OpenAI", "NLP"]}
+              projectUrl="https://abdul-resume-intelligence.streamlit.app/"
+              codeUrl="https://github.com/abdulxrahman-ai/resume-intelligence"
+              delay={0}
             />
           </div>
         </Section>
