@@ -809,7 +809,7 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
               projectUrl="https://stock-prediction-dashboard1.streamlit.app/"
               codeUrl="https://github.com/abdulxrahman-ai/stock-prediction-dashboard"
               delay={0.05}
-            />
+             />
             
            <ProjectCard
               title="YouTube Intelligence"
