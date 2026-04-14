@@ -797,7 +797,7 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
             <ProjectCard
               title="AI Stock Prediction + News Sentiment Dashboard"
               description="Worked on developing an AI based market intelligence dashboard that brings together stock trend and analysis, technical indicators, and sentiment analysis to present structured and data driven insight."
-              badge="ML Project"
+              badge="ML"
               skills={[
                 "Python",
                 "Streamlit",
@@ -814,7 +814,7 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
            <ProjectCard
               title="YouTube Intelligence"
               description="Built an AI-powered YouTube video understanding system that lets users paste a YouTube link, process the content, and ask questions grounded in the video transcript. The project is designed to deliver intelligent retrieval, structured answers, and a polished end-to-end AI product experience."
-              badge="LLM Application · RAG"
+              badge="LLM · RAG"
               skills={["Python", "Streamlit", "FastAPI", "NLP", "LLMs", "RAG"]}
               projectUrl="https://youtube-intelligence.streamlit.app/"
               codeUrl="https://github.com/abdulxrahman-ai/youtube-intelligence"
@@ -824,7 +824,7 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
             <ProjectCard
               title="IntervueIQ"
               description="Built an AI-powered interview preparation platform that helps users practice interviews through an interactive and intelligent experience. The project is designed to simulate real-world interview flow, strengthen preparation, and deliver a polished portfolio-ready AI product experience."
-              badge="AI/ML Project"
+              badge="AI/ML"
               skills={["Python", "GenAI", "NLP", "LLMs", "Hugging Face"]}
               projectUrl="https://huggingface.co/spaces/abdulxrahman/intervueiq"
               codeUrl="https://github.com/abdulxrahman-ai/intervueiq"
@@ -834,7 +834,7 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
             <ProjectCard
               title="Resume Intelligence"
               description="Developed an AI-powered resume analysis system that evaluates resumes, extracts key insights, and provides intelligent feedback using modern NLP and GenAI techniques. The system is designed to reflect ATS style evaluation and support more informed hiring decisions."
-              badge="GenAI Project"
+              badge="GenAI"
               skills={["Python", "Streamlit", "OpenAI", "NLP"]}
               projectUrl="https://abdul-resume-intelligence.streamlit.app/"
               codeUrl="https://github.com/abdulxrahman-ai/resume-intelligence"
