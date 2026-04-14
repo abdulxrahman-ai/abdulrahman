@@ -793,16 +793,6 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
 
         <Section id="projects" eyebrow="Projects" title="Featured Project">
           <div className="grid gap-6 md:grid-cols-2">
-
-           <ProjectCard
-              title="YouTube Intelligence"
-              description="Built an AI-powered YouTube video understanding system that lets users paste a YouTube link, process the content, and ask questions grounded in the video transcript. The project is designed to deliver intelligent retrieval, structured answers, and a polished end-to-end AI product experience."
-              badge="🔥 LLM Application"
-              skills={["Python", "Streamlit", "FastAPI", "NLP", "LLMs", "RAG"]}
-              projectUrl="https://youtube-intelligence.streamlit.app/"
-              codeUrl="https://github.com/abdulxrahman-ai/youtube-intelligence"
-              delay={0.15}
-            />
             
             <ProjectCard
               title="AI Stock Prediction + News Sentiment Dashboard"
@@ -819,6 +809,16 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
               projectUrl="https://stock-prediction-dashboard1.streamlit.app/"
               codeUrl="https://github.com/abdulxrahman-ai/stock-prediction-dashboard"
               delay={0.05}
+            />
+            
+           <ProjectCard
+              title="YouTube Intelligence"
+              description="Built an AI-powered YouTube video understanding system that lets users paste a YouTube link, process the content, and ask questions grounded in the video transcript. The project is designed to deliver intelligent retrieval, structured answers, and a polished end-to-end AI product experience."
+              badge="badge="LLM Application · RAG""
+              skills={["Python", "Streamlit", "FastAPI", "NLP", "LLMs", "RAG"]}
+              projectUrl="https://youtube-intelligence.streamlit.app/"
+              codeUrl="https://github.com/abdulxrahman-ai/youtube-intelligence"
+              delay={0.15}
             />
 
             <ProjectCard
