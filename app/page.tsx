@@ -811,16 +811,6 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
               delay={0.05}
              />
             
-           <ProjectCard
-              title="YouTube Intelligence"
-              description="Built an AI-powered YouTube video understanding system that lets users paste a YouTube link, process the content, and ask questions grounded in the video transcript. The project is designed to deliver intelligent retrieval, structured answers, and a polished end-to-end AI product experience."
-              badge="LLM RAG"
-              skills={["Python", "Streamlit", "FastAPI", "NLP", "LLMs", "RAG"]}
-              projectUrl="https://youtube-intelligence.streamlit.app/"
-              codeUrl="https://github.com/abdulxrahman-ai/youtube-intelligence"
-              delay={0.15}
-            />
-
             <ProjectCard
               title="IntervueIQ"
               description="Built an AI-powered interview preparation platform that helps users practice interviews through an interactive and intelligent experience. The project is designed to simulate real-world interview flow, strengthen preparation, and deliver a polished portfolio-ready AI product experience."
