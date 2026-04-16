@@ -845,11 +845,11 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
 
   <div className={`rounded-[1.6rem] p-6 ${clay}`}>
     <h3 className="text-xl font-semibold text-slate-900">
-  AI Agents: A Comprehensive Review
+  Self Improving Autonomous AI Agents
 </h3>
 
     <p className="mt-2 text-xs text-slate-500">
-  Research Paper · 2026 · AI Agents 
+ Review Research Paper
 </p>
 
     <div className="mt-4 flex gap-3">
