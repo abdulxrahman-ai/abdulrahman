@@ -841,9 +841,38 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
           <TiltCard>
             <div className={`rounded-[2rem] p-[1px] ${glass}`}>
               <div className="rounded-[calc(2rem-1px)] bg-[linear-gradient(135deg,rgba(255,255,255,0.76),rgba(255,255,255,0.42))] p-8">
-                <p className="max-w-2xl text-slate-600">
-                  Publication details will be added here as research papers, technical write-ups, and formal contributions are published.
-                </p>
+                <div className="space-y-6">
+
+  <div className={`rounded-[1.6rem] p-6 ${clay}`}>
+    <h3 className="text-xl font-semibold text-slate-900">
+  AI Agents: A Comprehensive Review
+</h3>
+
+    <p className="mt-2 text-xs text-slate-500">
+  Research Paper · 2026 · AI Agents · Survey Paper
+</p>
+
+    <div className="mt-4 flex gap-3">
+      <GlassPill
+        href="/AI-Agents-Review.pdf"
+        target="_blank"
+        rel="noreferrer"
+        className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 border-blue-200 shadow-[0_10px_30px_rgba(99,102,241,0.15)]"
+      >
+        View Paper
+      </GlassPill>
+
+      <GlassPill
+  href="/AI-Agents-Review.pdf"
+  download
+        className="bg-white/80 !text-slate-900 border-white/60 shadow-[0_10px_24px_rgba(15,23,42,0.10)]"
+      >
+        Download PDF
+      </GlassPill>
+    </div>
+  </div>
+
+</div>
               </div>
             </div>
           </TiltCard>
