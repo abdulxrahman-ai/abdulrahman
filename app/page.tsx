@@ -845,11 +845,11 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
 
   <div className={`rounded-[1.6rem] p-6 ${clay}`}>
     <h3 className="text-xl font-semibold text-slate-900">
-  Self Improving Autonomous AI Agents
+  Self Improving Autonomous AI Agents: Architectures, Capabilities, and Open Challenges
 </h3>
 
     <p className="mt-2 text-xs text-slate-500">
- Review Research Paper
+ A structured review of self-improving autonomous AI agents, analyzing key components such as reasoning, tool integration, memory, and multi-agent collaboration. The paper compares leading architectures, highlights practical trade-offs, and identifies critical research gaps in long-term learning, robustness, and evaluation for real-world deployment.
 </p>
 
     <div className="mt-4 flex gap-3">
