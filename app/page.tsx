@@ -849,7 +849,7 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
 </h3>
 
     <p className="mt-2 text-xs text-slate-500">
- A structured review of self-improving autonomous AI agents, analyzing key components such as reasoning, tool integration, memory, and multi-agent collaboration. The paper compares leading architectures, highlights practical trade-offs, and identifies critical research gaps in long-term learning, robustness, and evaluation for real-world deployment.
+ In this paper, I explore how self-improving autonomous AI agents operate, focusing on reasoning, tool integration, memory, and multi-agent systems. I compare existing approaches, analyze their strengths and limitations, and identify key challenges in developing reliable and scalable agent systems.
 </p>
 
     <div className="mt-4 flex gap-3">
