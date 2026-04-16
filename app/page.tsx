@@ -849,7 +849,7 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
 </h3>
 
     <p className="mt-2 text-xs text-slate-500">
-  Research Paper · 2026 · AI Agents · Survey Paper
+  Research Paper · 2026 · AI Agents 
 </p>
 
     <div className="mt-4 flex gap-3">
@@ -864,7 +864,8 @@ className="bg-gradient-to-r from-sky-100 to-indigo-100 text-blue-800 border-blue
 
       <GlassPill
   href="/AI-Agents-Review.pdf"
-  download
+  target="_blank"
+  rel="noreferrer"
         className="bg-white/80 !text-slate-900 border-white/60 shadow-[0_10px_24px_rgba(15,23,42,0.10)]"
       >
         Download PDF
