@@ -42,14 +42,14 @@ const education = [
   {
     school: "Avila University",
     degree: "Master's in Artificial Intelligence",
-    field: "Artificial Intelligence",
-    dates: "August 2024 – December 2026",
+    field: "August 2024 – December 2026",
+    dates: " Kansas City, Missouri, United States.",
   },
   {
     school: "Osmania University",
     degree: "Bachelor's of Commerce in Computer Applications",
-    field: "Commerce",
-    dates: "June 2020 – June 2023",
+    field: "June 2020 – June 2023",
+    dates: "Hyderabad, Telangana, India.",
   },
 ];
 
